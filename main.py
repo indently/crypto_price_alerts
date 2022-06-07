@@ -19,18 +19,19 @@ def check_rates():
 def alert(coin: api.Coin, price_top: float, price_bottom: float):
     current_price = '{:,}'.format(coin.current_price)
     price_text = f'{coin.name}: {current_price}€'
+    percent_change = f'[24h: {round(coin.price_change_24h, 2)}%]'
 
     if coin.current_price >= price_top:
-        print(f'{price_text} --> TOP limit ({price_top}€).')
+        print(f'{price_text} {percent_change} --> TOP limit ({price_top}€).')
         # Insert code that you want to execute if coin reaches your TOP goal
         return
 
     if coin.current_price <= price_bottom:
-        print(f'{price_text} --> BOTTOM limit ({price_bottom}€).')
+        print(f'{price_text} {percent_change} --> BOTTOM limit ({price_bottom}€).')
         # Insert code that you want to execute if coin reaches your BOTTOM goal
         return
 
-    print(price_text)
+    print(price_text, f'{percent_change}')
 
 
 def main():
@@ -39,7 +40,7 @@ def main():
         i += 1
         print(f'___ {i} ___')
         check_rates()
-        sleep(30)  # Call the API every 30 seconds to check
+        sleep(60)  # Call the API every 30 seconds to check
 
 
 if __name__ == '__main__':

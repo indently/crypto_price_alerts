@@ -9,6 +9,7 @@ class Coin:
     current_price: float
     high_24h: float
     low_24h: float
+    price_change_24h: float
 
 
 def get_crypto_data() -> [Coin]:
@@ -26,7 +27,8 @@ def get_crypto_data() -> [Coin]:
                        name=item['name'],
                        current_price=item['current_price'],
                        high_24h=item['high_24h'],
-                       low_24h=item['low_24h'])
+                       low_24h=item['low_24h'],
+                       price_change_24h=item['price_change_percentage_24h'])
 
         coin_list.append(current)
 
