@@ -12,7 +12,8 @@ class Coin:
     price_change_24h: float
 
 
-def get_crypto_data() -> [Coin]:
+# https://www.coingecko.com/en/api/documentation
+def get_crypto_data() -> list[Coin]:
     base_url = 'https://api.coingecko.com/api/v3/coins/markets'
     payload = {'vs_currency': 'eur',
                'order': 'market_cap_desc'}
